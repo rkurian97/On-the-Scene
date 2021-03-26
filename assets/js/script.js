@@ -1,39 +1,58 @@
-const apiKey='?api_key=6409614a1cbe16090479d217424f788f';
-const baseURL= 'https://api.themoviedb.org/3/'
-const baseImgUrl= "https://image.tmdb.org/t/p/w92";
+const baseURL= 'https://api.themoviedb.org/3/';
+const baseImgUrl= "https://image.tmdb.org/t/p/";
+const smallPosterURL= 'w92';
+const bigPosterURL= 'w500';
 
 let query= "jaws";
 // w45, w92, w152, w185, w342, w500, w780  poster sizes
 
+//grabbing html elements
 const queryContainer= document.getElementById("movie-search");
 const movieModal= document.getElementById("movieModal");
+const exitModal= document.getElementById("exitModal");
 
-let activateModal= function(){
-    console.log("hello")
+//onclick function for each poster
+let activateModal= function(title, overview, rating, bigPosterPath){
+    console.log(title);
+    console.log(overview);
+    console.log(rating);
+    console.log(bigPosterPath);
     movieModal.setAttribute("style", "display:block");
 }
 
+//search query function
 let findMovies= function (){
     fetch(baseURL+'search/movie'+apiKey+'&query='+query)
     .then(response => response.json())
     .then( function(data){
+        //loops through each object in the results response to show all posters
         console.log(data);
         for (i=0; i<data.results.length; i++){
+            // if the movie does not have a poster we do not add to the results
             if(data.results[i].poster_path){
-                console.log(baseImgUrl+data.results[i].poster_path);
                 const poster=document.createElement("img");
-                poster.setAttribute("src", baseImgUrl+data.results[i].poster_path);
-                poster.setAttribute("onclick", "activateModal();");
+                poster.setAttribute("src", baseImgUrl+smallPosterURL+data.results[i].poster_path);
+                let title= JSON.stringify(data.results[i].original_title);
+                let overview= JSON.stringify(data.results[i].overview);
+                let rating= JSON.stringify(data.results[i].vote_average);
+                let bigPosterPath= JSON.stringify(baseImgUrl+bigPosterURL+data.results[i].poster_path)
+                let releaseDate= JSON.stringify(data.results[i].release_date);
+                poster.setAttribute('onclick', 'activateModal('+title+ ','+overview+','+rating+','+bigPosterPath+','+ releaseDate+ ');');
                 queryContainer.append(poster);
             }
         }
     });
 }
 
+//onclick function so that when you click in the background of the modal it exits out. 
 window.onclick= function(event){
     if (event.target.className== 'modal-background'){
         movieModal.setAttribute("style", "display:none");
     }
 }
+
+// exitModal.onclick= function(){
+//     movieModal.setAttribute("style", "display:none");
+// }
 
 findMovies();
