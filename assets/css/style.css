@@ -1,3 +1,4 @@
+/* this keeps the footer at the bottom of the page */
 html,
 body {
     min-height: 100vh;
@@ -11,4 +12,3 @@ body > footer {
 
 
 
-@import "https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
