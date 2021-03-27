@@ -3,13 +3,21 @@ const baseImgUrl= "https://image.tmdb.org/t/p/";
 const smallPosterURL= 'w92';
 const bigPosterURL= 'w500';
 
-let query= "jaws";
 // w45, w92, w152, w185, w342, w500, w780  poster sizes
-
+let query="jaws";
 //grabbing html elements
 const queryContainer= document.getElementById("movie-search");
 const movieModal= document.getElementById("movieModal");
 const exitModal= document.getElementById("exitModal");
+const searchText= document.getElementById("searchText")
+const searchButton= document.getElementById ("searchButton")
+
+
+//eventlistener
+searchButton.addEventListener("click", function(){
+    query= searchText.value; 
+    console.log(query)
+});
 
 //onclick function for each poster
 let activateModal= function(title, overview, rating, bigPosterPath){
