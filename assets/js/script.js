@@ -16,6 +16,7 @@ const modalPoster= document.getElementById("modalPoster");
 const modalOverview= document.getElementById("modalOverview");
 const modalRating= document.getElementById("modalRating");
 const modalTitle= document.getElementById("modalTitle");
+const exitModal= document.getElementById("exitModal");
 
 //eventlistener
 searchButton.addEventListener("click", function(){
@@ -65,7 +66,7 @@ window.onclick= function(event){
     }
 }
 
-// exitModal.onclick= function(){
-//     movieModal.setAttribute("style", "display:none");
-// }
+exitModal.onclick= function(){
+    movieModal.setAttribute("style", "display:none");
+}
 
