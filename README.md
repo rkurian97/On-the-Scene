@@ -38,6 +38,10 @@ http://www.omdbapi.com/
 
 https://bulma.io/
 
+## Google Slides Presentation
+
+https://docs.google.com/presentation/d/1W2JD3EWXEev7RI1DMePMXSVmz6-dbqiEkYqO4TWT3m4/edit?usp=sharing
+
 ## Challenges and Solutions our team faced 
 
 Collaborating, Problem Solving, Zoom Meetings, Communication, Solving Merge Conflicts,Working around each other’s Schedules, Deadlines
