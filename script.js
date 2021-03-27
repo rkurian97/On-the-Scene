@@ -20,6 +20,10 @@ let activateModal= function(title, overview, rating, bigPosterPath){
     movieModal.setAttribute("style", "display:block");
 }
 
+
+// html elements - grab the html elemts by id
+
+
 //search query function
 let findMovies= function (){
     fetch(baseURL+'search/movie'+apiKey+'&query='+query)
