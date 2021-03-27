@@ -1,7 +1,7 @@
 const baseURL= 'https://api.themoviedb.org/3/';
 const baseImgUrl= "https://image.tmdb.org/t/p/";
 const smallPosterURL= 'w92';
-const bigPosterURL= 'w500';
+const bigPosterURL= 'w342';
 
 // w45, w92, w152, w185, w342, w500, w780  poster sizes
 let query="jaws";
@@ -28,6 +28,9 @@ searchButton.addEventListener("click", function(){
 //onclick function for each poster
 let activateModal= function(title, overview, rating, bigPosterPath){
     modalTitle.innerHTML= title;
+    modalOverview.innerHTML= overview;
+    modalRating.innerHTML= rating;
+    modalPoster.setAttribute("src", bigPosterPath);
     console.log(title);
     console.log(overview);
     console.log(rating);
