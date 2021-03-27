@@ -22,7 +22,7 @@ searchButton.addEventListener("click", function(){
 
 //onclick function for each poster
 let activateModal= function(title, overview, rating, bigPosterPath){
-    modalTitle.innerHTML=title;
+    console.log(title);
     console.log(overview);
     console.log(rating);
     console.log(bigPosterPath);
@@ -63,4 +63,3 @@ window.onclick= function(event){
 // exitModal.onclick= function(){
 //     movieModal.setAttribute("style", "display:none");
 // }
-
