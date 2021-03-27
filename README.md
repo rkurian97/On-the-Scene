@@ -30,11 +30,11 @@ http://www.omdbapi.com/
 
 ## Team Members 
 
-* Rohith Kurian
+* [Rohith Kurian](https://github.com/rkurian97)
 
-* Sharee Osbourne 
+* [Sharee Osbourne](https://github.com/ShareeO)
 
-* Dakota Nelson 
+* [Dakota Nelson](https://github.com/kotalilyy)
 
 ## Resources/ Documentation
 
