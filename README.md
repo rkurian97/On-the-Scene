@@ -1,77 +1,60 @@
-# Interactive Front-end Group Project
+# Group Project #1 
 
-# On The Scene Movie App
+## On The Scene Movie App
 
-We created a Movie App that allows you to find current Movies based on the category of the film genre. The user also has the option to use Google Maps to search for the nearest Movie Theatre! 
+We created a Movie App Database that provides streaming availability for Movies and Television Shows.
+
+## User Story & Motivation for Development 
+
+* As a lover of all things Tech
+
+* I want a Movie App alternative to Netflix, Amazon, YouTube etc..
+
+* So that I can support an independent endeavor 
 
 ## Technologies Used
 
 * HTML
 
-* CSS, Material/Bulma
+* CSS
+
+* Bulma
 
 * JavaScript
 
-* jQuery
+## Apis Used
 
-* Movie API
+https://rapidapi.com/rapidapi/api/movie-database-imdb-alternative
 
-* Google Maps API
-
-
-## User Story & Motivation for Development 
-
-* As a film fanatic
-* I want a Movie App that allows me to search for current movies based on the film genre 
-* So that I can easily find a movie and get directions to the nearest Movie Theatre
-
-
-## Acceptance Criteria
-
-* Use a CSS framework other than Bootstrap.
-
-* Be deployed to GitHub Pages.
-
-* Be interactive and responsive.
-
-* Use at least two server-side APIs.
-
-* Does not use alerts, confirms, or prompts (use modals).
-
-* Use client-side storage to store persistent data.
-
-* Have a polished UI.
-
-* Have a clean repository that meets quality coding standards.
-
-* Have a quality README.
-
-* Must add the project to your Portfolio. 
+http://www.omdbapi.com/ 
 
 ## Team Members 
 
-* Rohith Kurian 
+* [Rohith Kurian](https://github.com/rkurian97)
 
-* Sharee Osbourne 
+* [Sharee Osbourne](https://github.com/ShareeO)
 
-* Dakota Nelson 
+* [Dakota Nelson](https://github.com/kotalilyy)
 
 ## Resources/ Documentation
 
-https://materializecss.com/
-
 https://bulma.io/
 
-http://www.omdbapi.com/ - The Open Movie Database 
+## Google Slides Presentation
 
-https://rapidapi.com/rapidapi/api/movie-database-imdb-alternative - Movie Database (IMBD alternative)
+https://docs.google.com/presentation/d/1W2JD3EWXEev7RI1DMePMXSVmz6-dbqiEkYqO4TWT3m4/edit?usp=sharing
 
-https://www.npmjs.com/package/axios
+## Project Proposal 
+
+https://docs.google.com/document/d/1uSfV2F5SL0jG1OcklDyPOzATQ0_jiRPbIRSrLxtcQqI/edit
 
 ## Challenges and Solutions our team faced 
 
-Pseudocoding, Agile Project Management, Collaborative Coding, Reading Technical Documentation, Creating Milestones with GitHub Issues, Working around each other's Schedules, Problem Solving, Communication, 
+Collaborating, Problem Solving, Zoom Meetings, Communication, Solving Merge Conflicts,Working around each other’s Schedules, Deadlines
 
 ## Live Link
 
 ## Screenshot 
+
+![onthescene](https://user-images.githubusercontent.com/77229281/112730895-1f229a00-8f02-11eb-8a1a-80fdb8ad0e50.png)
+
