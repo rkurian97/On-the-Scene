@@ -16,7 +16,8 @@ const searchButton= document.getElementById ("searchButton")
 //eventlistener
 searchButton.addEventListener("click", function(){
     query= searchText.value; 
-    console.log(query)
+    queryContainer.innerHTML= "" 
+    findMovies();
 });
 
 //onclick function for each poster
@@ -63,4 +64,3 @@ window.onclick= function(event){
 //     movieModal.setAttribute("style", "display:none");
 // }
 
-findMovies();
