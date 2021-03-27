@@ -10,10 +10,19 @@ let query= "jaws";
 const queryContainer= document.getElementById("movie-search");
 const movieModal= document.getElementById("movieModal");
 const exitModal= document.getElementById("exitModal");
+const searchText= document.getElementById("searchText");
+const searchButton= document.getElementById("searchButton");
+const modalTitle= document.getElementById("modalTitle");
+
+searchButton.addEventListener("click", function() {
+    query= searchText.value;
+    console.log(query);
+});
+
 
 //onclick function for each poster
 let activateModal= function(title, overview, rating, bigPosterPath){
-    console.log(title);
+    modalTitle.innerHTML=title;
     console.log(overview);
     console.log(rating);
     console.log(bigPosterPath);
