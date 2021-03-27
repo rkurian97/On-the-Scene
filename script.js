@@ -6,22 +6,24 @@ const bigPosterURL= 'w500';
 let query= "jaws";
 // w45, w92, w152, w185, w342, w500, w780  poster sizes
 
-//grabbing html elements
+//grabbing html elements for modal
 const queryContainer= document.getElementById("movie-search");
 const movieModal= document.getElementById("movieModal");
 const exitModal= document.getElementById("exitModal");
+// html elements - grab the html elemts by id
+const modalPoster= document.getElementById("modalPoster");
+const modalOverview= document.getElementById("modalOverview");
+const modalRating= document.getElementById("modalRating");
+const modalTitle= document.getElementById("modalTitle");
 
 //onclick function for each poster
 let activateModal= function(title, overview, rating, bigPosterPath){
-    console.log(title);
-    console.log(overview);
-    console.log(rating);
-    console.log(bigPosterPath);
+    modalTitle.innerHTML=title;
+    //console.log(overview);
+    //console.log(rating);
+    //console.log(bigPosterPath);
     movieModal.setAttribute("style", "display:block");
 }
-
-
-// html elements - grab the html elemts by id
 
 
 //search query function
@@ -55,8 +57,8 @@ window.onclick= function(event){
     }
 }
 
-// exitModal.onclick= function(){
-//     movieModal.setAttribute("style", "display:none");
-// }
+ exitModal.onclick= function(){
+    movieModal.setAttribute("style", "display:none");
+ }
 
 findMovies();
