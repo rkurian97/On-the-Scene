@@ -11,7 +11,11 @@ const movieModal= document.getElementById("movieModal");
 const exitModal= document.getElementById("exitModal");
 const searchText= document.getElementById("searchText")
 const searchButton= document.getElementById ("searchButton")
-
+// html elements - grab the html elemts by id
+const modalPoster= document.getElementById("modalPoster");
+const modalOverview= document.getElementById("modalOverview");
+const modalRating= document.getElementById("modalRating");
+const modalTitle= document.getElementById("modalTitle");
 
 //eventlistener
 searchButton.addEventListener("click", function(){
@@ -22,7 +26,8 @@ searchButton.addEventListener("click", function(){
 
 //onclick function for each poster
 let activateModal= function(title, overview, rating, bigPosterPath){
-    modalTitle.innerHTML=title;
+    modalTitle.innerHTML= title;
+    console.log(title);
     console.log(overview);
     console.log(rating);
     console.log(bigPosterPath);
