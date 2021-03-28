@@ -1,6 +1,6 @@
 const baseURL= 'https://api.themoviedb.org/3/';
 const baseImgUrl= "https://image.tmdb.org/t/p/";
-const smallPosterURL= 'w92';
+const smallPosterURL= 'w185';
 const bigPosterURL= 'w342';
 
 // w45, w92, w152, w185, w342, w500, w780  poster sizes
@@ -30,10 +30,6 @@ let activateModal= function(title, overview, rating, bigPosterPath){
     modalOverview.innerHTML= overview;
     modalRating.innerHTML= rating;
     modalPoster.setAttribute("src", bigPosterPath);
-    console.log(title);
-    console.log(overview);
-    console.log(rating);
-    console.log(bigPosterPath);
     movieModal.setAttribute("style", "display:block");
 }
 
@@ -47,6 +43,17 @@ let findMovies= function (){
         for (i=0; i<data.results.length; i++){
             // if the movie does not have a poster we do not add to the results
             if(data.results[i].poster_path){
+                //making column div container for each poster
+                const imgDiv= document.createElement("div");
+                imgDiv.setAttribute("class", "column is-one-fifth");
+                queryContainer.append(imgDiv)
+
+                //making another div for the gradient effect
+                const gradientDiv= document.createElement("div");
+                gradientDiv.setAttribute("class", "gradientDiv");
+                imgDiv.append(gradientDiv);
+                
+                //making poster and adding its data into the activateModal function
                 const poster=document.createElement("img");
                 poster.setAttribute("src", baseImgUrl+smallPosterURL+data.results[i].poster_path);
                 let title= JSON.stringify(data.results[i].original_title);
@@ -55,7 +62,8 @@ let findMovies= function (){
                 let bigPosterPath= JSON.stringify(baseImgUrl+bigPosterURL+data.results[i].poster_path)
                 let releaseDate= JSON.stringify(data.results[i].release_date);
                 poster.setAttribute('onclick', 'activateModal('+title+ ','+overview+','+rating+','+bigPosterPath+','+ releaseDate+ ');');
-                queryContainer.append(poster);
+                poster.setAttribute("class", "smallPoster");
+                gradientDiv.append(poster);
             }
         }
     });
@@ -68,7 +76,7 @@ window.onclick= function(event){
     }
 }
 
-// exitModal.onclick= function(){
-//     movieModal.setAttribute("style", "display:none");
-// }
+exitModal.onclick= function(){
+    movieModal.setAttribute("style", "display:none");
+}
 
