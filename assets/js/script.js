@@ -90,11 +90,6 @@ window.onclick= function(event){
     }
 }
 
-<<<<<<< HEAD
-// exitModal.onclick= function(){
-//     movieModal.setAttribute("style", "display:none");
-// }
-=======
 exitModal.onclick= function(){
     movieModal.setAttribute("style", "display:none");
 }
@@ -111,4 +106,3 @@ let recordfavorite=function(smallPosterPath){
 
 }
 
->>>>>>> 78ab9bb04f2bf2d03bbee661bfe2b6894a750766
