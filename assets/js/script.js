@@ -10,7 +10,9 @@ if(localStorage){
 // w45, w92, w152, w185, w342, w500, w780  poster sizes
 let query="jaws";
 //grabbing html elements
-const queryContainer= document.getElementById("movie-search");
+const queryContainer= document.getElementById("queryContainer");
+const favoriteNav=document.getElementById("favoriteNav");
+
 const movieModal= document.getElementById("movieModal");
 const exitModal= document.getElementById("exitModal");
 const searchText= document.getElementById("searchText")
@@ -64,6 +66,8 @@ let findMovies= function (){
                 const poster=document.createElement("img");
                 let smallPosterPath=data.results[i].poster_path;
                 poster.setAttribute("src", baseImgUrl+smallPosterURL+smallPosterPath);
+                poster.setAttribute("class", "smallPoster");
+
                 smallPosterPath=JSON.stringify(smallPosterPath);
                 let title= JSON.stringify(data.results[i].original_title);
                 let overview= JSON.stringify(data.results[i].overview);
@@ -73,7 +77,6 @@ let findMovies= function (){
                 let id=JSON.stringify(data.results[i].id);
 
                 poster.setAttribute('onclick', 'activateModal('+title+ ','+overview+','+rating+','+bigPosterPath+','+ releaseDate+ ','+smallPosterPath+');');
-                poster.setAttribute("class", "smallPoster");
                 gradientDiv.append(poster);
             }
         }
@@ -99,4 +102,7 @@ let recordfavorite=function(smallPosterPath){
 //     // })
     localStorage.setItem(key, smallPosterPath);
     key++;
+
+
 }
+
