@@ -11,20 +11,29 @@ if(localStorage){
 let query="jaws";
 //grabbing html elements
 const queryContainer= document.getElementById("queryContainer");
-const favoriteNav=document.getElementById("favoriteNav");
+const searchText= document.getElementById("searchText");
+const searchButton= document.getElementById ("searchButton");
 
+// movie modal elements
 const movieModal= document.getElementById("movieModal");
 const exitModal= document.getElementById("exitModal");
-const searchText= document.getElementById("searchText")
-const searchButton= document.getElementById ("searchButton")
-// html elements - grab the html elemts by id
 const modalPoster= document.getElementById("modalPoster");
 const modalOverview= document.getElementById("modalOverview");
 const modalRating= document.getElementById("modalRating");
 const modalTitle= document.getElementById("modalTitle");
-const favoriteButton= document.getElementById("favorite")
+const modalReleaseDate= document.getElementById("modalReleaseDate");
+const favoriteButton= document.getElementById("favorite");
 
-//eventlistener
+//Streaming elements
+const availabilityButton= document.getElementById("availabilityButton");
+const netflix= document.getElementById("netflix");
+const hbo= document.getElementById("hbo");
+const prime=document.getElementById("prime");
+const disney=document.getElementById("disney");
+const hulu=document.getElementById("hulu");
+const none= document.getElementById("none");
+
+//eventlistener for search button 
 searchButton.addEventListener("click", function(){
     query= searchText.value; 
     queryContainer.innerHTML= "" 
@@ -32,14 +41,23 @@ searchButton.addEventListener("click", function(){
 });
 
 //onclick function for each poster
-let activateModal= function(title, overview, rating, bigPosterPath, releaseDate, smallPosterPath){
+let activateModal= function(title, overview, rating, bigPosterPath, releaseDate, smallPosterPath, id){
     modalTitle.innerHTML= title;
     modalOverview.innerHTML= overview;
-    modalRating.innerHTML= rating;
+    modalRating.innerHTML= modalRating.innerHTML+ rating;
+    modalReleaseDate.innerHTML=modalReleaseDate.innerHTML+releaseDate;
     modalPoster.setAttribute("src", bigPosterPath);
     movieModal.setAttribute("style", "display:block");
     smallPosterPath=JSON.stringify(smallPosterPath);
-    favoriteButton.setAttribute("onclick","recordfavorite("+smallPosterPath+")")
+    favoriteButton.setAttribute("data-id", JSON.stringify(id));
+    favoriteButton.setAttribute("onclick","recordFavorite("+smallPosterPath+")")
+
+    hbo.setAttribute("style", "display: none");
+    netflix.setAttribute("style", "display: none");
+    prime.setAttribute("style", "display: none");
+    disney.setAttribute("style", "display: none");
+    hulu.setAttribute("style", "display: none");
+    none.setAttribute("style", "display: none");
 }
 
 //search query function
@@ -76,25 +94,25 @@ let findMovies= function (){
                 let releaseDate= JSON.stringify(data.results[i].release_date);
                 let id=JSON.stringify(data.results[i].id);
 
-                poster.setAttribute('onclick', 'activateModal('+title+ ','+overview+','+rating+','+bigPosterPath+','+ releaseDate+ ','+smallPosterPath+');');
+                poster.setAttribute('onclick', 'activateModal('+title+ ','+overview+','+rating+','+bigPosterPath+','+ releaseDate+ ','+smallPosterPath+','+id+');');
                 gradientDiv.append(poster);
             }
         }
     });
 }
 
-//onclick function so that when you click in the background of the modal it exits out. 
+//onclick function so that when you click in the background of the modal it exits out. Or if you click the x button on the modal
 window.onclick= function(event){
     if (event.target.className== 'modal-background'){
         movieModal.setAttribute("style", "display:none");
     }
 }
-
 exitModal.onclick= function(){
     movieModal.setAttribute("style", "display:none");
 }
 
-let recordfavorite=function(smallPosterPath){
+//record favorite function. Sets poster path into local storage
+let recordFavorite=function(smallPosterPath){
     
     for(let i=0; i<localStorage.length; i++){
         if (localStorage.getItem(localStorage.key(i))==smallPosterPath){
@@ -106,4 +124,35 @@ let recordfavorite=function(smallPosterPath){
 
 
 }
+
+availabilityButton.addEventListener("click", function(){
+
+    let id=favoriteButton.getAttribute("data-id");
+    fetch(`https://streaming-availability.p.rapidapi.com/get/basic?country=us&tmdb_id=movie%2F${id}`, {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-key": "4e9ad7e5a5msh0a57503ac951c9dp1d772fjsn68cba4b29124",
+            "x-rapidapi-host": "streaming-availability.p.rapidapi.com"
+        }
+    })
+    .then(response => response.json())
+    .then(function(data){
+            console.log(data);
+            if(data.streamingInfo.hasOwnProperty("hbo")){
+                hbo.setAttribute("style", "display: block");
+            }else if (data.streamingInfo.hasOwnProperty("netflix")){
+                netflix.setAttribute("style", "display: block");
+            }else if (data.streamingInfo.hasOwnProperty("prime")){
+                prime.setAttribute("style", "display: block");
+            }else if(data.streamingInfo.hasOwnProperty("disney")){
+                disney.setAttribute("style", "display: block");
+            }else if(data.streamingInfo.hasOwnProperty("hulu")){
+                hulu.setAttribute("style", "display: block");
+            }else{
+                none.setAttribute("style", "display: block");
+            }
+    
+    });
+
+});
 
