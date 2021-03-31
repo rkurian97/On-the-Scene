@@ -21,7 +21,6 @@ body > footer {
     opacity: .7;
     mix-blend-mode: screen;
     border-radius: 10%;
-
 }
 
 .gradientDiv{
@@ -39,7 +38,8 @@ body > footer {
     cursor: pointer;
     transition: .5s all;
     border-radius: 10%;
-
+    width: 300px;
+    padding: 25px;
 }
 .gradientDiv:hover{
     background-position: 100% 100%;
