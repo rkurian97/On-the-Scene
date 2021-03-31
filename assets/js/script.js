@@ -2,6 +2,10 @@ const baseURL= 'https://api.themoviedb.org/3/';
 const baseImgUrl= "https://image.tmdb.org/t/p/";
 const smallPosterURL= 'w185';
 const bigPosterURL= 'w342';
+let key=0;
+if(localStorage){
+    key=localStorage.length;
+}                                                  
 
 // w45, w92, w152, w185, w342, w500, w780  poster sizes
 let query="jaws";
@@ -16,6 +20,7 @@ const modalPoster= document.getElementById("modalPoster");
 const modalOverview= document.getElementById("modalOverview");
 const modalRating= document.getElementById("modalRating");
 const modalTitle= document.getElementById("modalTitle");
+const favoriteButton= document.getElementById("favorite")
 
 //eventlistener
 searchButton.addEventListener("click", function(){
@@ -25,12 +30,14 @@ searchButton.addEventListener("click", function(){
 });
 
 //onclick function for each poster
-let activateModal= function(title, overview, rating, bigPosterPath){
+let activateModal= function(title, overview, rating, bigPosterPath, releaseDate, smallPosterPath){
     modalTitle.innerHTML= title;
     modalOverview.innerHTML= overview;
     modalRating.innerHTML= rating;
     modalPoster.setAttribute("src", bigPosterPath);
     movieModal.setAttribute("style", "display:block");
+    smallPosterPath=JSON.stringify(smallPosterPath);
+    favoriteButton.setAttribute("onclick","recordfavorite("+smallPosterPath+")")
 }
 
 //search query function
@@ -55,13 +62,17 @@ let findMovies= function (){
                 
                 //making poster and adding its data into the activateModal function
                 const poster=document.createElement("img");
-                poster.setAttribute("src", baseImgUrl+smallPosterURL+data.results[i].poster_path);
+                let smallPosterPath=data.results[i].poster_path;
+                poster.setAttribute("src", baseImgUrl+smallPosterURL+smallPosterPath);
+                smallPosterPath=JSON.stringify(smallPosterPath);
                 let title= JSON.stringify(data.results[i].original_title);
                 let overview= JSON.stringify(data.results[i].overview);
                 let rating= JSON.stringify(data.results[i].vote_average);
                 let bigPosterPath= JSON.stringify(baseImgUrl+bigPosterURL+data.results[i].poster_path)
                 let releaseDate= JSON.stringify(data.results[i].release_date);
-                poster.setAttribute('onclick', 'activateModal('+title+ ','+overview+','+rating+','+bigPosterPath+','+ releaseDate+ ');');
+                let id=JSON.stringify(data.results[i].id);
+
+                poster.setAttribute('onclick', 'activateModal('+title+ ','+overview+','+rating+','+bigPosterPath+','+ releaseDate+ ','+smallPosterPath+');');
                 poster.setAttribute("class", "smallPoster");
                 gradientDiv.append(poster);
             }
@@ -80,3 +91,12 @@ exitModal.onclick= function(){
     movieModal.setAttribute("style", "display:none");
 }
 
+let recordfavorite=function(smallPosterPath){
+//     // fetch("https://api.themoviedb.org/3/movie/578?api_key=6409614a1cbe16090479d217424f788f&language=en-US")
+//     // .then(response => response.json())
+//     // .then( function(data){
+//     //     console.log(data)
+//     // })
+    localStorage.setItem(key, smallPosterPath);
+    key++;
+}
