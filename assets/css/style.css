@@ -8,13 +8,39 @@ body {
 body > footer {
     margin-top: auto;
 }
-.modal-wrap{
-    position: fixed;
-    top:50%;
-    left: 50%;
-}
 
 .button  {
     background-color: rgb(108, 22, 108);
     color: white;
+}
+
+.smallPoster{
+    background: white;
+    background-size: cover no-repeat center center;
+    z-index: 1;
+    opacity: .7;
+    mix-blend-mode: screen;
+    border-radius: 10%;
+
+}
+
+.gradientDiv{
+    background: white;
+    background: -moz-linear-gradient(-45deg, #000000 0%, #000000 25%, #1e539e 50%, #ff3083 75%, #7800a8 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #000000 0%,#000000 25%,#1e539e 50%,#ff3083 75%,#7800a8 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #000000 0%,#000000 25%,#1e539e 50%,#ff3083 75%,#7800a8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background-size: 400% 400%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    position: relative;
+    cursor: pointer;
+    transition: .5s all;
+    border-radius: 10%;
+
+}
+.gradientDiv:hover{
+    background-position: 100% 100%;
 }

@@ -16,7 +16,8 @@
 		</div>
 		<div class="navbar-menu" id="nav-links">
 			<div class="navbar-end">
-				<a class="navbar-item" href="index.html">Home</a> <a class="navbar-item" href="favorites.html">Favorites</a>
+				<a class="navbar-item" href="index.html">Home</a> 
+				<a class="navbar-item" href="favorites.html">Favorites</a>
 			</div>
 		</div>
 	</nav><!--end nav-->
@@ -25,7 +26,12 @@
 		<p class="control is-expanded"><input class="input" id="searchText" placeholder="Search Movie Database" type="text"></p>
 		<p class="control"><a class="button" id="searchButton">Search</a></p>
 	</div>
-	<div class='container' id="movie-search"></div><!--end search bar-->
+	<!--end search bar-->
+
+	<!--Search Result Box-->
+	<div class='columns is-flex-wrap-wrap' id="queryContainer">
+
+	</div>
 	<!--begin movie modal-->
 	<div class="modal" id="movieModal">
 		<div class="modal-background">
@@ -33,21 +39,24 @@
 				<section class="modal-wrap">
 					<div class="modal-card">
 						<header class="modal-card-head">
-							<p class="modal-card-title" id="modalTitle"></p><button aria-label="close" class="delete"></button>
+							<p class="modal-card-title" id="modalTitle"></p><button aria-label="close" class="delete" id="exitModal"></button>
 						</header>
 						<section class="modal-card-body">
 							<img id="modalPoster">
+							<h2 class="title is-three">Overview</h2>
 							<p id="modalOverview"></p>
+							<h2 class="title is-three">Rating</h2>
 							<p id="modalRating"></p>
 						</section>
 						<footer class="modal-card-foot">
-							<button class="button">Favorite</button>
+							<button class="button" id="favorite">Favorite</button> 
 						</footer>
 					</div>
 				</section>
 			</div>
 		</div>
-	</div><!--end modal-->
+	</div>
+	<!--end modal-->
 	<!--begin footer-->
 	<footer class="footer">
 		<div class="container">
