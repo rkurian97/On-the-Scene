@@ -9,10 +9,11 @@ const favoritesContainer= document.getElementById("favoritesContainer");
 let loadFavorites=function(){
 
     for(let i=0; i<localStorage.length; i++){
-        console.log(localStorage.getItem(localStorage.key(i)));
         //making column div container for each poster
         const imgDiv= document.createElement("div");
         imgDiv.setAttribute("class", "column is-one-fifth");
+        imgDiv.setAttribute("onclick", "remove(this)");
+        imgDiv.setAttribute("id", localStorage.key(i));
         favoritesContainer.append(imgDiv)
 
         //making another div for the gradient effect
@@ -26,8 +27,13 @@ let loadFavorites=function(){
         poster.setAttribute("src", baseImgUrl+smallPosterURL+smallPosterPath);
         poster.setAttribute("class", "smallPoster");
         gradientDiv.append(poster);
-
     }
+}
+
+let remove= function(ele){
+    let element= ele;
+    localStorage.removeItem(ele.id);
+    element.remove();
 }
 
 loadFavorites();
