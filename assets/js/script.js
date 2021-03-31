@@ -95,11 +95,12 @@ exitModal.onclick= function(){
 }
 
 let recordfavorite=function(smallPosterPath){
-//     // fetch("https://api.themoviedb.org/3/movie/578?api_key=6409614a1cbe16090479d217424f788f&language=en-US")
-//     // .then(response => response.json())
-//     // .then( function(data){
-//     //     console.log(data)
-//     // })
+    
+    for(let i=0; i<localStorage.length; i++){
+        if (localStorage.getItem(localStorage.key(i))==smallPosterPath){
+            return;
+        }
+    }
     localStorage.setItem(key, smallPosterPath);
     key++;
 
