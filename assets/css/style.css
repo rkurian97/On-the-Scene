@@ -14,6 +14,7 @@ body > footer {
     color: white;
 }
 
+/* poster in result box*/
 .smallPoster{
     background: white;
     background-size: cover no-repeat center center;
@@ -24,6 +25,7 @@ body > footer {
 
 }
 
+/* hover effect start*/
 .gradientDiv{
     background: white;
     background: -moz-linear-gradient(-45deg, #000000 0%, #000000 25%, #1e539e 50%, #ff3083 75%, #7800a8 100%); /* FF3.6-15 */
@@ -45,7 +47,4 @@ body > footer {
     background-position: 100% 100%;
 }
 
-.streamingIcon{
-    width: 100;
-    height: auto;
-}
+/* hover effect end*/
