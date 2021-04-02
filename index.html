@@ -12,7 +12,7 @@
 	<!-- begin nav -->
 	<nav class="navbar has-shadow is-white">
 		<div class="navbar-brand">
-			<a class="navbar-item"><img alt="logo" class="py-2 px-2" src="./assets/images/logo4.png" style="max-height: 70px"></a>
+			<a class="navbar-item" href="index.html"><img alt="logo" src="./assets/images/logo4.png" style="max-height: 70px"></a>
 		</div>
 		<div class="navbar-start" id="nav-links">
 			<div class="navbar-end">
@@ -20,24 +20,20 @@
 				<a class="navbar-item" href="favorites.html">Favorites</a>
 			</div>
 		</div>
-	</nav><!--end nav-->
-	
-	  
-	 
+	</nav>
+	<!--end nav-->
 	<!--search bar-->
-	<div class="field is-grouped mt-4">
+	<div class="field is-grouped mt-4 ml-3">
 		<p class="control is-expanded"><input class="input" id="searchText" placeholder="Search Movie Database" type="text"></p>
-		<p class="control"><a class="button" id="searchButton">Search</a></p>
+		<p class="control mr-3"><a class="button" id="searchButton">Search</a></p>
 	</div>
 	<!--end search bar-->
 
 	<!--Search Result Box-->
-	<div class='columns is-flex-wrap-wrap' id="queryContainer">
+	<div class='columns is-flex-wrap-wrap ml-3' id="queryContainer">
 
 	</div>
-
-
-
+	<!--end Search Result Box-->
 	<!--begin movie modal-->
 	<div class="modal" id="movieModal">
 		<div class="modal-background">
@@ -59,12 +55,12 @@
 							<button class="button" id="availabilityButton">Check Availability</button>
 							<br>
 
-							<img class="mr-3" id="netflix" src="./assets/images/netflix.svg" style="display: none;">
-							<img class="mr-2" id="hbo" src="./assets/images/hbo.svg" style="display: none;">
-							<img class="mr-2" id="prime" src="./assets/images/prime.svg" style="display: none;">
-							<img class="mr-2" id="disney" src="./assets/images/disney.svg" style="display: none;">
-							<img class="mr-2" id="hulu" src="./assets/images/hulu.svg" style="display: none;">
-							<p id="none" style="display: none;" style="display: none;"><strong>None Sorry!</strong></p>
+							<img class="mt-2" id="netflix" src="./assets/images/netflix.svg" style="display: none;">
+							<img class="mt-2" id="hbo" src="./assets/images/hbo.svg" style="display: none;">
+							<img class="mt-2" id="prime" src="./assets/images/prime.svg" style="display: none;">
+							<img class="mt-2" id="disney" src="./assets/images/disney.svg" style="display: none;">
+							<img class="mt-2" id="hulu" src="./assets/images/hulu.svg" style="display: none;">
+							<p class="mt-2" id="none" style="display: none;" style="display: none;"><strong>None Sorry!</strong></p>
 						
 						</section>
 						<footer class="modal-card-foot">
@@ -77,13 +73,13 @@
 	</div>
 	<!--end modal-->
 	<!--begin footer-->
-	<footer class="footer">
-		<div class="container">
+	<footer class="footer has-background-grey-darker has-text-primary-light">
 			<div class="content has-text-centered">
 				<p>Copyright 2021 On The Scene</p>
 			</div>
-		</div>
-	</footer><!--end footer-->
+	</footer>
+	<!--end footer-->
+	
 	<script src='assets/js/keys.js'>
 	</script> 
 	<script src='assets/js/script.js'>
