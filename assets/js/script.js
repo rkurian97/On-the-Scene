@@ -38,8 +38,8 @@ function activateModal(title, overview, rating, bigPosterPath, releaseDate, smal
     //setting inner html
     modalTitle.innerHTML= title;
     modalOverview.innerHTML= overview;
-    modalRating.innerHTML= modalRating.innerHTML+ rating;
-    modalReleaseDate.innerHTML=modalReleaseDate.innerHTML+releaseDate;
+    modalRating.innerHTML= "<strong>Rating: </strong>"+ rating;
+    modalReleaseDate.innerHTML="<strong>Release Date: </strong>"+releaseDate;
     modalPoster.setAttribute("src", bigPosterPath);
     movieModal.setAttribute("style", "display:block");
 

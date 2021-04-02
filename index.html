@@ -78,6 +78,7 @@
                 </button>
                 <br />
 
+<<<<<<< HEAD
                 <img
                   class="mt-2"
                   id="netflix"
@@ -138,3 +139,57 @@
     <script src="assets/js/script.js"></script>
   </body>
 </html>
+=======
+	</div>
+	<!--end Search Result Box-->
+	<!--begin movie modal-->
+	<div class="modal" id="movieModal">
+		<div class="modal-background">
+			<div class="modal-content">
+					<div class="modal-card">
+						<header class="modal-card-head">
+							<p class="modal-card-title" id="modalTitle"></p><button aria-label="close" class="delete" id="exitModal"></button>
+						</header>
+						<section class="modal-card-body">
+							<img id="modalPoster">
+							<h2 class="title is-three">Overview</h2>
+							<p id="modalOverview"></p>
+							<h2 class="title is-three"></h2>
+							<p id="modalReleaseDate"></p>
+							<h2 class="title is-three"></h2>
+							<p id="modalRating"></p>
+							<h2 class="title is-three"></h2>
+							<button class="button" id="availabilityButton">Check Availability</button>
+							<br>
+
+							<img class="mt-2" id="netflix" src="./assets/images/netflix.svg" style="display: none;">
+							<img class="mt-2" id="hbo" src="./assets/images/hbo.svg" style="display: none;">
+							<img class="mt-2" id="prime" src="./assets/images/prime.svg" style="display: none;">
+							<img class="mt-2" id="disney" src="./assets/images/disney.svg" style="display: none;">
+							<img class="mt-2" id="hulu" src="./assets/images/hulu.svg" style="display: none;">
+							<p class="mt-2" id="none" style="display: none;" style="display: none;"><strong>None Sorry!</strong></p>
+						
+						</section>
+						<footer class="modal-card-foot">
+							<button class="button" id="favorite">Favorite</button> 
+						</footer>
+					</div>
+			</div>
+		</div>
+	</div>
+	<!--end modal-->
+	<!--begin footer-->
+	<footer class="footer has-background-grey-darker has-text-primary-light">
+			<div class="content has-text-centered">
+				<p>Copyright 2021 On The Scene</p>
+			</div>
+	</footer>
+	<!--end footer-->
+	
+	<script src='assets/js/keys.js'>
+	</script> 
+	<script src='assets/js/script.js'>
+	</script>
+</body>
+</html>
+>>>>>>> 4bbf0d0a46db185eb01585e604361732f809d6f3
