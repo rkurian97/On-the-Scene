@@ -52,6 +52,8 @@ body > footer {
     height: auto;
 }
 
-
-
 /* hover effect end*/
+
+@media (prefers-color-scheme: dark) {
+    /* all your styles for dark mode here */
+}
