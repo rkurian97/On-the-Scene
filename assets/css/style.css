@@ -49,3 +49,8 @@ body > footer {
     width: 100;
     height: auto;
 }
+
+
+.hero {
+position: center;
+}
