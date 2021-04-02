@@ -47,7 +47,7 @@ body > footer {
     background-position: 100% 100%;
 }
 
-/* hover effect end*/
+/* hover effect end */
 
 /* dark mode styles begin */
 body {
@@ -59,6 +59,9 @@ body {
     background-color: black;
     color: white;
   }
+
+
+ /* end dark mode styles */
 
   button {
     background-color: #6c676b; 
@@ -72,9 +75,7 @@ body {
     max-width: 40px;
     max-height: 40px;
     margin-top: 10px;
-    margin-bottom: 15px;
-  }
-
- /* end dark mode styles */
+    margin-bottom: 10px;
+  } 
 
  
