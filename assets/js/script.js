@@ -180,3 +180,4 @@ availabilityButton.addEventListener("click", function(){
 
 });
 
+
