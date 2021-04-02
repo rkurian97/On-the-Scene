@@ -1,7 +1,4 @@
-
-* {
-    box-sizing: border-box;
-  }/* this keeps the footer at the bottom of the page */
+/* this keeps the footer at the bottom of the page */
 html,
 body {
     min-height: 100vh;
