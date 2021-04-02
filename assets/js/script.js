@@ -216,6 +216,7 @@ availabilityButton.addEventListener("click", function(){
 
 /*------------End Streaming Availability ---------------------*/
 
+//function for dark mode
 function myFunction() {
     var element = document.body;
     element.classList.toggle("dark-mode");
