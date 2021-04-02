@@ -31,12 +31,31 @@
     </nav>
     <!--end nav-->
     <!--dark mode button-->
-    <div class="field is-grouped is-grouped-centered">
-      <p class="control">
-        <a class="button is-small is-dark is-rounded"> Switch to Dark Mode </a>
-      </p>
-    </div>
-	<!--end button-->
+   
+	<!--begin dark mode button-->
+  <style>
+    body {
+      padding: 25px;
+      background-color: white;
+      color: black;
+    }
+    
+    .dark-mode {
+      background-color: black;
+      color: white;
+    }
+    </style>
+    </head>
+    <body>
+    
+    <button onclick="myFunction()">Dark Mode</button>
+    
+    <script>
+    function myFunction() {
+       var element = document.body;
+       element.classList.toggle("dark-mode");
+    }
+    </script>
     <!--begin search bar-->
     <div class="field is-grouped mt-4 ml-3">
       <p class="control is-expanded">
