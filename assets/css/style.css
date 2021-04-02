@@ -47,6 +47,7 @@ body > footer {
     background-position: 100% 100%;
 }
 
+<<<<<<< HEAD
 .streamingIcon{
     width: 100;
     height: auto;
@@ -57,3 +58,6 @@ body > footer {
 @media (prefers-color-scheme: dark) {
     /* all your styles for dark mode here */
 }
+=======
+/* hover effect end*/
+>>>>>>> d30f05369c4c0d0823f2b70559d016760c12831a

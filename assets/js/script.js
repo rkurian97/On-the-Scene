@@ -30,6 +30,7 @@ const disney=document.getElementById("disney");
 const hulu=document.getElementById("hulu");
 const none= document.getElementById("none");
 
+<<<<<<< HEAD
 //eventlistener for search button 
 searchButton.addEventListener("click", function(){
     query= searchText.value; 
@@ -40,6 +41,13 @@ searchButton.addEventListener("click", function(){
 
 //onclick function for each poster. this function populates the modal with the information based on the movie that was clicked. 
 let activateModal= function(title, overview, rating, bigPosterPath, releaseDate, smallPosterPath, id){
+=======
+
+/*------------Start Search Query ---------------------*/ 
+
+//onclick function for each poster. this function populates the modal with the information based on the movie that was clicked. 
+function activateModal(title, overview, rating, bigPosterPath, releaseDate, smallPosterPath, id){
+>>>>>>> d30f05369c4c0d0823f2b70559d016760c12831a
     //setting inner html
     modalTitle.innerHTML= title;
     modalOverview.innerHTML= overview;
@@ -62,8 +70,47 @@ let activateModal= function(title, overview, rating, bigPosterPath, releaseDate,
     none.setAttribute("style", "display: none");
 }
 
+//making column div container for each poster
+function createImgDiv(){
+    const imgDiv= document.createElement("div");
+    imgDiv.setAttribute("class", "column is-one-fifth");
+    return imgDiv;
+}
+
+//making another div for the gradient effect
+function createGradientDiv(){
+    const gradientDiv= document.createElement("div");
+    gradientDiv.setAttribute("class", "gradientDiv");
+    return gradientDiv;
+}
+
+//making poster
+function createPoster(result){
+    const poster=document.createElement("img");
+    let smallPosterPath=result.poster_path;
+    poster.setAttribute("src", baseImgUrl+smallPosterURL+smallPosterPath);
+    poster.setAttribute("class", "smallPoster");
+
+    //adding all the necessary data into the activateModal onlick function
+    smallPosterPath=JSON.stringify(smallPosterPath);
+    let title= JSON.stringify(result.original_title);
+    let overview= JSON.stringify(result.overview);
+    let rating= JSON.stringify(result.vote_average);
+    let bigPosterPath= JSON.stringify(baseImgUrl+bigPosterURL+result.poster_path)
+    let releaseDate= JSON.stringify(result.release_date);
+    let id=JSON.stringify(result.id);
+
+    poster.setAttribute('onclick', 'activateModal('+title+ ','+overview+','+rating+','+bigPosterPath+','+ releaseDate+ ','+smallPosterPath+','+id+');');
+    return poster;
+}
+
+
 //search query function
+<<<<<<< HEAD
 let findMovies= function (){
+=======
+function findMovies(){
+>>>>>>> d30f05369c4c0d0823f2b70559d016760c12831a
     // api call
     fetch(`${baseURL}search/movie${apiKey}&query=${query}`)
     .then(response => response.json())
@@ -71,19 +118,19 @@ let findMovies= function (){
         console.log(data);
         //loops through each object in the results response to show all posters
         for (i=0; i<data.results.length; i++){
+            const result= data.results[i];
             // if the movie does not have a poster we do not add to the results
-            if(data.results[i].poster_path){
+            if(result.poster_path){
                 //making column div container for each poster
-                const imgDiv= document.createElement("div");
-                imgDiv.setAttribute("class", "column is-one-fifth");
+                const imgDiv=createImgDiv();
                 queryContainer.append(imgDiv)
 
                 //making another div for the gradient effect
-                const gradientDiv= document.createElement("div");
-                gradientDiv.setAttribute("class", "gradientDiv");
+                const gradientDiv= createGradientDiv();
                 imgDiv.append(gradientDiv);
                 
                 //making poster
+<<<<<<< HEAD
                 const poster=document.createElement("img");
                 let smallPosterPath=data.results[i].poster_path;
                 poster.setAttribute("src", baseImgUrl+smallPosterURL+smallPosterPath);
@@ -99,12 +146,32 @@ let findMovies= function (){
                 let id=JSON.stringify(data.results[i].id);
 
                 poster.setAttribute('onclick', 'activateModal('+title+ ','+overview+','+rating+','+bigPosterPath+','+ releaseDate+ ','+smallPosterPath+','+id+');');
+=======
+                const poster=createPoster(result);
+>>>>>>> d30f05369c4c0d0823f2b70559d016760c12831a
                 gradientDiv.append(poster);
             }
         }
     });
 }
+/*------------End Search Query ---------------------*/ 
 
+/*------------Modal Functions ---------------------*/ 
+
+//eventlistener for search button 
+searchButton.addEventListener("click", function(){
+    query= searchText.value; 
+    //reset results container
+    queryContainer.innerHTML= "" 
+    // find movies is the function that does the api call
+    findMovies();
+});
+
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> d30f05369c4c0d0823f2b70559d016760c12831a
 //onclick function so that when you click in the background of the modal it exits out.
 window.onclick= function(event){
     if (event.target.className== 'modal-background'){
@@ -116,12 +183,20 @@ exitModal.onclick= function(){
     movieModal.setAttribute("style", "display:none");
 }
 
+<<<<<<< HEAD
+=======
+/*------------Start Favorites/Local Storage ---------------------*/
+
+>>>>>>> d30f05369c4c0d0823f2b70559d016760c12831a
 // intializing key to 0. If there is something in local storage it gets the length of local storage. 
 let key=0;
 if(localStorage){
     key=localStorage.length;
 }                                                  
+<<<<<<< HEAD
 
+=======
+>>>>>>> d30f05369c4c0d0823f2b70559d016760c12831a
 //record favorite function. Sets poster path into local storage
 let recordFavorite=function(smallPosterPath){
     
@@ -133,9 +208,50 @@ let recordFavorite=function(smallPosterPath){
     }
     localStorage.setItem(key, smallPosterPath);
     key++;
+<<<<<<< HEAD
 }
 
 // function that checks the availability of the movie on a streaming service
+=======
+}
+/*------------End Favorites/Local Storage ---------------------*/
+
+/*------------Start Streaming Availability ---------------------*/
+
+// sets image of logo to true if that movie is available on that platform
+function showStreaming(data){
+    console.log(data);
+    // if the movie is on a specific streaming platform the movie logo display is set to true. 
+    let hboBoolean= data.streamingInfo.hasOwnProperty("hbo");
+    let netflixBoolean= data.streamingInfo.hasOwnProperty("netflix");
+    let primeBoolean= data.streamingInfo.hasOwnProperty("prime");
+    let disneyBoolean= data.streamingInfo.hasOwnProperty("disney");
+    let huluBoolean= data.streamingInfo.hasOwnProperty("hulu");
+
+    // if the movie is on a specific streaming platform the movie logo display is set to true. 
+    if(hboBoolean){
+        hbo.setAttribute("style", "display: block");
+    }
+    if (netflixBoolean){
+        netflix.setAttribute("style", "display: block");
+    }
+    if (primeBoolean){
+        prime.setAttribute("style", "display: block");
+    }
+    if(disneyBoolean){
+        disney.setAttribute("style", "display: block");
+    }
+    if(huluBoolean){
+        hulu.setAttribute("style", "display: block");
+    }
+    if(!hboBoolean && !netflixBoolean && !primeBoolean && !disneyBoolean && !huluBoolean){
+        none.setAttribute("style", "display: block");
+    }
+
+}
+
+// event listener function that checks the availability of the movie on a streaming service
+>>>>>>> d30f05369c4c0d0823f2b70559d016760c12831a
 availabilityButton.addEventListener("click", function(){
 
     let id=favoriteButton.getAttribute("data-id");
@@ -147,6 +263,7 @@ availabilityButton.addEventListener("click", function(){
         }
     })
     .then(response => response.json())
+<<<<<<< HEAD
     .then(function(data){
             console.log(data);
             // if the movie is on a specific streaming platform the movie logo display is set to true. 
@@ -181,3 +298,9 @@ availabilityButton.addEventListener("click", function(){
 });
 
 
+=======
+    .then(data => showStreaming(data));
+});
+
+/*------------End Streaming Availability ---------------------*/
+>>>>>>> d30f05369c4c0d0823f2b70559d016760c12831a
