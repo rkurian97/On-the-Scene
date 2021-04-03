@@ -133,6 +133,7 @@ searchButton.addEventListener("click", function(){
 });
 
 
+
 //onclick function so that when you click in the background of the modal it exits out.
 window.onclick= function(event){
     if (event.target.className== 'modal-background'){
@@ -215,9 +216,3 @@ availabilityButton.addEventListener("click", function(){
 });
 
 /*------------End Streaming Availability ---------------------*/
-
-//function for dark mode
-function myFunction() {
-    var element = document.body;
-    element.classList.toggle("dark-mode");
- }
