@@ -41,7 +41,7 @@ function activateModal(title, overview, rating, bigPosterPath, releaseDate, smal
     modalRating.innerHTML= "<strong>Rating: </strong>"+ rating;
     modalReleaseDate.innerHTML="<strong>Release Date: </strong>"+releaseDate;
     modalPoster.setAttribute("src", bigPosterPath);
-    movieModal.setAttribute("style", "display:block");
+    movieModal.setAttribute("style", "display:flex");
 
     //passing in the poster path as an attribute on the favorite button, so the recordFavroite function can record it into local storage if it was clicked. 
     smallPosterPath=JSON.stringify(smallPosterPath);
