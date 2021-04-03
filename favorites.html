@@ -1,51 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <link href="./assets/css/style.css" rel="stylesheet" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
-      rel="stylesheet"
-    />
-    <title>Document</title>
-  </head>
-  <body>
-    <!-- begin nav -->
-    <nav class="navbar has-shadow is-white mb-3">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="favorites.html"
-          ><img
-            alt="logo"
-            src="./assets/images/option1.png"
-            style="max-height: 70px"
-        /></a>
-      </div>
-      <div class="navbar-start" id="nav-links">
-        <div class="navbar-end">
-          <a class="navbar-item" href="index.html">Home</a>
-          <a class="navbar-item" href="favorites.html">Favorites</a>
-        </div>
-      </div>
-    </nav>
-    <!--end nav-->
-    <!--begin dark mode button-->
-    <button onclick="myFunction()">Dark Mode</button>
-    <!---end dark mode button-->
+<head>
+	<meta charset="UTF-8">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<link href="./assets/css/style.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css" rel="stylesheet">
+	<title>Document</title>
+</head>
+<body>
+	<!-- begin nav -->
+	<nav class="navbar has-shadow is-white mb-3">
+		<div class="navbar-brand">
+			<a class="navbar-item" href="index.html"><img alt="logo" src="./assets/images/logo4.png" style="max-height: 70px"></a>
+		</div>
+		<div class="navbar-menu" id="nav-links">
+			<div class="navbar-end">
+				<a class="navbar-item" href="index.html">Home</a> 
+				<a class="navbar-item" href="favorites.html">Favorites</a>
+			</div>
+		</div>
+	</nav>
+	<!--end nav-->
+	
+<!--Favorite Result Box-->
+<div class='columns is-flex-wrap-wrap ml-3' id="favoritesContainer">
 
-    <!--Favorite Result Box-->
-    <div class="columns is-flex-wrap-wrap ml-3" id="favoritesContainer"></div>
-    <!--end Favorite Result Box-->
+</div>
+<!--end Favorite Result Box-->
 
-    <!--footer-->
-    <footer class="footer has-background-grey-darker has-text-primary-light">
-      <div class="content has-text-centered">
-        <p>Copyright 2021 On The Scene</p>
-      </div>
-    </footer>
-    <!--end footer-->
+<!--footer-->
+	<footer class="footer has-background-grey-darker has-text-primary-light">
+			<div class="content has-text-centered">
+				<p>Copyright 2021 On The Scene</p>
+			</div>
+	</footer>
+<!--end footer-->
 
-    <script src="./assets/js/favorite.js"></script>
-  </body>
+	<script src="./assets/js/favorite.js">
+	</script>
+</body>
 </html>

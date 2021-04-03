@@ -10,7 +10,7 @@ body > footer {
 }
 
 .button  {
-    background-color: rgb(171, 58, 171);
+    background-color: rgb(108, 22, 108);
     color: white;
 }
 
@@ -22,6 +22,7 @@ body > footer {
     opacity: .7;
     mix-blend-mode: screen;
     border-radius: 10%;
+
 }
 
 /* hover effect start*/
@@ -40,42 +41,10 @@ body > footer {
     cursor: pointer;
     transition: .5s all;
     border-radius: 10%;
-    width: 300px;
-    padding: 25px;
+
 }
 .gradientDiv:hover{
     background-position: 100% 100%;
 }
 
-/* hover effect end */
-
-/* dark mode styles begin */
-body {
-    background-color: white;
-    color: black;
-  }
-  
-  .dark-mode {
-    background-color: black;
-    color: white;
-  }
-
-
- /* end dark mode styles */
-
-  button {
-    background-color: #6c676b; 
-    border: none;
-    box-sizing: border-box;
-    color: white;
-    padding: 15px 32px;
-    display: inline-block;
-    font-size: 10px;
-    text-align: center;
-    max-width: 40px;
-    max-height: 40px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  } 
-
- 
+/* hover effect end*/
