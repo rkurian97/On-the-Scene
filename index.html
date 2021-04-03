@@ -1,86 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta content="IE=edge" http-equiv="X-UA-Compatible">
-	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<title>On the Scene</title>
-	<link href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css" rel="stylesheet">
-	<link href="./assets/css/style.css" rel="stylesheet">
-</head>
-<body>
-	<!-- begin nav -->
-	<nav class="navbar has-shadow is-white">
-		<div class="navbar-brand">
-			<a class="navbar-item" href="index.html"><img alt="logo" src="./assets/images/logo4.png" style="max-height: 70px"></a>
-		</div>
-		<div class="navbar-menu" id="nav-links">
-			<div class="navbar-end">
-				<a class="navbar-item" href="index.html">Home</a> 
-				<a class="navbar-item" href="favorites.html">Favorites</a>
-			</div>
-		</div>
-	</nav>
-	<!--end nav-->
-	<!--search bar-->
-	<div class="field is-grouped mt-4 ml-3">
-		<p class="control is-expanded"><input class="input" id="searchText" placeholder="Search Movie Database" type="text"></p>
-		<p class="control mr-3"><a class="button" id="searchButton">Search</a></p>
-	</div>
-	<!--end search bar-->
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>On the Scene</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
+      rel="stylesheet"
+    />
+    <link href="./assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- begin nav -->
+    <nav class="navbar has-shadow is-white">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="index.html"
+          ><img
+            alt="logo"
+            src="./assets/images/logo4.png"
+            style="max-height: 70px"
+        /></a>
+      </div>
+      <div class="navbar-start" id="nav-links">
+        <div class="navbar-end">
+          <a class="navbar-item" href="index.html">Home</a>
+          <a class="navbar-item" href="favorites.html">Favorites</a>
+        </div>
+      </div>
+    </nav>
+    <!--end nav-->
+    <!--begin dark mode button-->
+    <button onclick="myFunction()">Dark Mode</button>
+    <!---end dark mode button-->
+    <!--begin search bar-->
+    <div class="field is-grouped mt-4 ml-3">
+      <p class="control is-expanded">
+        <input
+          class="input"
+          id="searchText"
+          placeholder="Search Movie Database"
+          type="text"
+        />
+      </p>
+      <p class="control mr-3"><a class="button" id="searchButton">Search</a></p>
+    </div>
+    <!--end search bar-->
 
-	<!--Search Result Box-->
-	<div class='columns is-flex-wrap-wrap ml-3' id="queryContainer">
+    <!--Search Result Box-->
+    <div class="columns is-flex-wrap-wrap ml-3" id="queryContainer"></div>
+    <!--end Search Result Box-->
+    <!--begin movie modal-->
+    <div class="modal" id="movieModal">
+      <div class="modal-background">
+        <div class="modal-content">
+          <section class="modal-wrap">
+            <div class="modal-card">
+              <header class="modal-card-head">
+                <p class="modal-card-title" id="modalTitle"></p>
+                <button
+                  aria-label="close"
+                  class="delete"
+                  id="exitModal"
+                ></button>
+              </header>
+              <section class="modal-card-body">
+                <img id="modalPoster" />
+                <h2 class="title is-three">Overview</h2>
+                <p id="modalOverview"></p>
+                <h2 class="title is-three"></h2>
+                <p id="modalReleaseDate"><strong>Release Date: </strong></p>
+                <h2 class="title is-three"></h2>
+                <p id="modalRating"><strong>Rating: </strong></p>
+                <h2 class="title is-three"></h2>
+                <button class="button" id="availabilityButton">
+                  Check Availability
+                </button>
+                <br />
+                <img
+                  class="mt-2"
+                  id="netflix"
+                  src="./assets/images/netflix.svg"
+                  style="display: none"
+                />
+                <img
+                  class="mt-2"
+                  id="hbo"
+                  src="./assets/images/hbo.svg"
+                  style="display: none"
+                />
+                <img
+                  class="mt-2"
+                  id="prime"
+                  src="./assets/images/prime.svg"
+                  style="display: none"
+                />
+                <img
+                  class="mt-2"
+                  id="disney"
+                  src="./assets/images/disney.svg"
+                  style="display: none"
+                />
+                <img
+                  class="mt-2"
+                  id="hulu"
+                  src="./assets/images/hulu.svg"
+                  style="display: none"
+                />
+                <p
+                  class="mt-2"
+                  id="none"
+                  style="display: none"
+                  style="display: none"
+                >
+                  <strong>None Sorry!</strong>
+                </p>
+              </section>
+              <footer class="modal-card-foot">
+                <button class="button" id="favorite">Favorite</button>
+              </footer>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <!--end modal-->
+    <!--begin footer-->
+    <footer class="footer has-background-grey-darker has-text-primary-light">
+      <div class="content has-text-centered">
+        <p>Copyright 2021 On The Scene</p>
+      </div>
+    </footer>
+    <!--end footer-->
 
-	</div>
-	<!--end Search Result Box-->
-	<!--begin movie modal-->
-	<div class="modal" id="movieModal">
-		<div class="modal-background">
-			<div class="modal-content">
-					<div class="modal-card">
-						<header class="modal-card-head">
-							<p class="modal-card-title" id="modalTitle"></p><button aria-label="close" class="delete" id="exitModal"></button>
-						</header>
-						<section class="modal-card-body">
-							<img id="modalPoster">
-							<h2 class="title is-three">Overview</h2>
-							<p id="modalOverview"></p>
-							<h2 class="title is-three"></h2>
-							<p id="modalReleaseDate"></p>
-							<h2 class="title is-three"></h2>
-							<p id="modalRating"></p>
-							<h2 class="title is-three"></h2>
-							<button class="button" id="availabilityButton">Check Availability</button>
-							<br>
-
-							<img class="mt-2" id="netflix" src="./assets/images/netflix.svg" style="display: none;">
-							<img class="mt-2" id="hbo" src="./assets/images/hbo.svg" style="display: none;">
-							<img class="mt-2" id="prime" src="./assets/images/prime.svg" style="display: none;">
-							<img class="mt-2" id="disney" src="./assets/images/disney.svg" style="display: none;">
-							<img class="mt-2" id="hulu" src="./assets/images/hulu.svg" style="display: none;">
-							<p class="mt-2" id="none" style="display: none;" style="display: none;"><strong>None Sorry!</strong></p>
-						
-						</section>
-						<footer class="modal-card-foot">
-							<button class="button" id="favorite">Favorite</button> 
-						</footer>
-					</div>
-			</div>
-		</div>
-	</div>
-	<!--end modal-->
-	<!--begin footer-->
-	<footer class="footer has-background-grey-darker has-text-primary-light">
-			<div class="content has-text-centered">
-				<p>Copyright 2021 On The Scene</p>
-			</div>
-	</footer>
-	<!--end footer-->
-	
-	<script src='assets/js/keys.js'>
-	</script> 
-	<script src='assets/js/script.js'>
-	</script>
-</body>
+    <script src="assets/js/keys.js"></script>
+    <script src="assets/js/script.js"></script>
+  </body>
 </html>
