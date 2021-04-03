@@ -14,9 +14,6 @@ body > footer {
     color: white;
 }
 
-#queryContainer{
-    align-self: center;
-}
 
 /* poster in result box*/
 .smallPoster{
@@ -62,6 +59,9 @@ body > footer {
 
 .footer{
     padding: 3rem 1.5rem 3rem;
+}
+.modal-card-foot{
+    justify-content: center;
 }
 
 @media only screen and (max-width: 600px) {
