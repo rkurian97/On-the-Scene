@@ -52,6 +52,10 @@ https://docs.google.com/document/d/1uSfV2F5SL0jG1OcklDyPOzATQ0_jiRPbIRSrLxtcQqI/
 
 Collaborating, Problem Solving, Zoom Meetings, Communication, Solving Merge Conflicts,Working around each other’s Schedules, Deadlines
 
+## Sources
+
+Gradient: https://codepen.io/jondaiello/pen/WGZNZv
+
 ## Live Link
 https://rkurian97.github.io/bc-project-1/
 

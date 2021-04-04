@@ -4,6 +4,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    font-family: 'Rubik', sans-serif;
 }
 body > footer {
     margin-top: auto;
@@ -47,6 +48,7 @@ body > footer {
     border-radius: 10%;
 
 }
+
 .gradientDiv:hover{
     background-position: 100% 100%;
 }
@@ -63,7 +65,20 @@ body > footer {
 .modal-card-foot{
     justify-content: center;
 }
+/*Favorites */
+#favoriteHeader{
+    text-align: center;
+    font-weight: bold;
+    color: purple;
+    font-size: larger;
+}
+/* #favorite{
+    background: url(../images/heart.svg) no-repeat;
+    background-size: contain;
+} */
 
+
+/*Media Queries*/
 @media only screen and (max-width: 600px) {
    #modalPoster{
        width: 60%;
