@@ -6,11 +6,11 @@ We created a Movie App Database that provides streaming availability for Movies 
 
 ## User Story & Motivation for Development 
 
-* As a lover of all things Tech
+* AS A movie buff
 
-* I want a Movie App alternative to Netflix, Amazon, YouTube etc..
+* I WANT a movie database where I can search movies and favorite them
 
-* So that I can support an independent endeavor 
+* SO THAT I can keep track of my favorite movies, discover new ones and see where I can watch them 
 
 ## Technologies Used
 
@@ -61,5 +61,5 @@ https://rkurian97.github.io/bc-project-1/
 
 ## Screenshot 
 
-![onthescene](https://user-images.githubusercontent.com/77229281/112730895-1f229a00-8f02-11eb-8a1a-80fdb8ad0e50.png)
+![onthescene](./assets/images/readmeIMG.png)
 
