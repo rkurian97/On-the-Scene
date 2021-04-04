@@ -216,3 +216,4 @@ availabilityButton.addEventListener("click", function(){
 });
 
 /*------------End Streaming Availability ---------------------*/
+
