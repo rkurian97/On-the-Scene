@@ -4,11 +4,13 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    font-family: 'Rubik', sans-serif;
 }
 body > footer {
     margin-top: auto;
 }
 
+/*Button*/
 .button  {
     background-color: rgb(108, 22, 108);
     color: white;
@@ -23,6 +25,9 @@ body > footer {
     mix-blend-mode: screen;
     border-radius: 10%;
 
+}
+.modal-card{
+    max-width: calc(100vw - 70px);
 }
 
 /* hover effect start*/
@@ -43,8 +48,35 @@ body > footer {
     border-radius: 10%;
 
 }
+
 .gradientDiv:hover{
     background-position: 100% 100%;
 }
 
 /* hover effect end*/
+
+.gradient{
+    background: linear-gradient(-60deg, #ff3083 25%, #7800a8 100%);
+}
+
+.footer{
+    padding: 3rem 1.5rem 3rem;
+}
+.modal-card-foot{
+    justify-content: center;
+}
+/*Favorites */
+#favoriteHeader{
+    text-align: center;
+    font-weight: bold;
+    color: purple;
+    font-size: larger;
+}
+
+
+/*Media Queries*/
+@media only screen and (max-width: 600px) {
+   #modalPoster{
+       width: 60%;
+   }
+  }
