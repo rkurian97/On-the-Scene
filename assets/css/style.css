@@ -66,11 +66,11 @@ body > footer {
     justify-content: center;
 }
 /*Favorites */
-#favoriteHeader{
+.titles{
     text-align: center;
     font-weight: bold;
     color: purple;
-    font-size: larger;
+    font-size: xx-large;
 }
 
 

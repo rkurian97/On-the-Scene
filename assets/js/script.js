@@ -243,3 +243,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+/*-------Home Page-----------------*/
+
+fetch(`${baseURL}trending/movie/week${apiKey}`)
+        .then(response => response.json())
+        .then(function (data) {
+            console.log(data);
+            // loops through each object in the results response to show all posters
+            for (let i = 0; i < data.results.length; i++) {
+                const result = data.results[i];
+                // if the movie does not have a poster we do not add to the results
+                if (result.poster_path) {
+                    //making column div container for each poster
+                    const imgDiv = createImgDiv();
+                    queryContainer.append(imgDiv)
+
+                    //making another div for the gradient effect
+                    const gradientDiv = createGradientDiv();
+                    imgDiv.append(gradientDiv);
+
+                    //making poster
+                    const poster = createPoster(result);
+                    gradientDiv.append(poster);
+                }
+            }
+        });
+
