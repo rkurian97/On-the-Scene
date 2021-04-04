@@ -10,11 +10,11 @@ body > footer {
     margin-top: auto;
 }
 
+/*Button*/
 .button  {
     background-color: rgb(108, 22, 108);
     color: white;
 }
-
 
 /* poster in result box*/
 .smallPoster{
@@ -72,10 +72,6 @@ body > footer {
     color: purple;
     font-size: larger;
 }
-/* #favorite{
-    background: url(../images/heart.svg) no-repeat;
-    background-size: contain;
-} */
 
 
 /*Media Queries*/
