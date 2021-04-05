@@ -146,12 +146,20 @@ exitModal.onclick = function () {
 /*------------Start Favorites/Local Storage ---------------------*/
 
 // intializing key to 0. If there is something in local storage it gets the length of local storage. 
-let key = 0;
-if (localStorage) {
-    key = localStorage.length;
+let key=0;
+
+//if there is anything in local storage it gets the last used highest number key. and continues off of that. 
+if (localStorage.length!==0){
+    for(let i=0; i<localStorage.length; i++){
+        if(localStorage.key(i)>key){
+            key= localStorage.key(i);
+        }
+    } 
+    key++;
 }
+
 //record favorite function. Sets poster path into local storage
-let recordFavorite = function (id) {
+function recordFavorite(id) {
 
     //if the poster path is already in local storage do no set a duplicate into local storage
     for (let i = 0; i < localStorage.length; i++) {
@@ -247,7 +255,6 @@ document.addEventListener('DOMContentLoaded', () => {
 fetch(`${baseURL}trending/movie/week${apiKey}`)
         .then(response => response.json())
         .then(function (data) {
-            console.log(data);
             // loops through each object in the results response to show all posters
             for (let i = 0; i < data.results.length; i++) {
                 const result = data.results[i];
