@@ -35,7 +35,7 @@ function activateModal(title, overview, rating, bigPosterPath, releaseDate, id){
 
     favoriteModal.setAttribute("style", "display:flex");
     availabilityButton.setAttribute("data-id", JSON.stringify(id));
-    trashButton.setAttribute("onclick", "removeFav( "+JSON.stringify(id)+");");
+    trashButton.setAttribute("onclick", "removeFav( "+JSON.stringify(id)+");"); //attaching remove favorite function as an onclick to the trash button
 
     //every time a new poster is clicked initializing the display of the streaming logos to none. When the availability button is clicked it will repopulate based on the new movie clicked
     hbo.setAttribute("style", "display: none");
@@ -97,16 +97,6 @@ function requestMovie(id){
     });
 }
 
-// Removes favorite
-function removeFav(id){
-    for(let i=0; i<localStorage.length; i++){
-        if(localStorage.getItem(localStorage.key(i))==id){
-            localStorage.removeItem(localStorage.key(i));
-            location.reload();
-        }
-    }
-}
-
 // Loads in all the favorite movies from local storage
 function loadFavorites(){
 
@@ -118,6 +108,16 @@ function loadFavorites(){
 }
 loadFavorites();
 
+
+// Removes favorite
+function removeFav(id){
+    for(let i=0; i<localStorage.length; i++){
+        if(localStorage.getItem(localStorage.key(i))==id){
+            localStorage.removeItem(localStorage.key(i));
+            location.reload();
+        }
+    }
+}
 /*------------NavBar Function ---------------------*/
 document.addEventListener('DOMContentLoaded', () => {
     // Get all "navbar-burger" elements
