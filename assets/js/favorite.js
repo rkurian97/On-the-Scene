@@ -34,7 +34,16 @@ function activateModal(title, overview, rating, bigPosterPath, releaseDate, id){
     modalPoster.setAttribute("src", bigPosterPath);
 
     favoriteModal.setAttribute("style", "display:flex");
+    availabilityButton.setAttribute("data-id", JSON.stringify(id));
     trashButton.setAttribute("onclick", "removeFav( "+JSON.stringify(id)+");");
+
+    //every time a new poster is clicked initializing the display of the streaming logos to none. When the availability button is clicked it will repopulate based on the new movie clicked
+    hbo.setAttribute("style", "display: none");
+    netflix.setAttribute("style", "display: none");
+    prime.setAttribute("style", "display: none");
+    disney.setAttribute("style", "display: none");
+    hulu.setAttribute("style", "display: none");
+    none.setAttribute("style", "display: none");
 }
 
 // create an img div
@@ -146,3 +155,55 @@ window.onclick = function (event) {
 exitModal.onclick = function () {
     favoriteModal.setAttribute("style", "display:none");
 }
+
+
+/*------------Start Streaming Availability ---------------------*/
+
+// sets image of logo to true if that movie is available on that platform
+function showStreaming(data) {
+    console.log(data);
+    // if the movie is on a specific streaming platform the movie logo display is set to true. 
+    let hboBoolean = data.streamingInfo.hasOwnProperty("hbo");
+    let netflixBoolean = data.streamingInfo.hasOwnProperty("netflix");
+    let primeBoolean = data.streamingInfo.hasOwnProperty("prime");
+    let disneyBoolean = data.streamingInfo.hasOwnProperty("disney");
+    let huluBoolean = data.streamingInfo.hasOwnProperty("hulu");
+
+    // if the movie is on a specific streaming platform the movie logo display is set to true. 
+    if (hboBoolean) {
+        hbo.setAttribute("style", "display: block");
+    }
+    if (netflixBoolean) {
+        netflix.setAttribute("style", "display: block");
+    }
+    if (primeBoolean) {
+        prime.setAttribute("style", "display: block");
+    }
+    if (disneyBoolean) {
+        disney.setAttribute("style", "display: block");
+    }
+    if (huluBoolean) {
+        hulu.setAttribute("style", "display: block");
+    }
+    if (!hboBoolean && !netflixBoolean && !primeBoolean && !disneyBoolean && !huluBoolean) {
+        none.setAttribute("style", "display: block");
+    }
+
+}
+
+// event listener function that checks the availability of the movie on a streaming service
+availabilityButton.addEventListener("click", function () {
+
+    let id = availabilityButton.getAttribute("data-id");
+    fetch(`https://streaming-availability.p.rapidapi.com/get/basic?country=us&tmdb_id=movie%2F${id}`, {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-key": "4e9ad7e5a5msh0a57503ac951c9dp1d772fjsn68cba4b29124",
+            "x-rapidapi-host": "streaming-availability.p.rapidapi.com"
+        }
+    })
+        .then(response => response.json())
+        .then(data => showStreaming(data));
+});
+
+/*------------End Streaming Availability ---------------------*/
