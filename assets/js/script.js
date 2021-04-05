@@ -243,8 +243,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
-<<<<<<< HEAD
-=======
 
 /*-------Home Page-----------------*/
 
@@ -272,4 +270,3 @@ fetch(`${baseURL}trending/movie/week${apiKey}`)
             }
         });
 
->>>>>>> a7d463cda459101abc755bc5f90527f3fb7e14b9
