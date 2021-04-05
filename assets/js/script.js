@@ -3,9 +3,8 @@ const baseURL = 'https://api.themoviedb.org/3/';
 const baseImgUrl = "https://image.tmdb.org/t/p/";
 const smallPosterURL = 'w185';
 const bigPosterURL = 'w342';
-
 // w45, w92, w152, w185, w342, w500, w780  poster sizes
-let query = "jaws";
+
 //grabbing html elements
 const queryContainer = document.getElementById("queryContainer");
 const searchText = document.getElementById("searchText");
@@ -34,7 +33,7 @@ const none = document.getElementById("none");
 /*------------Start Search Query ---------------------*/
 
 //onclick function for each poster. this function populates the modal with the information based on the movie that was clicked. 
-function activateModal(title, overview, rating, bigPosterPath, releaseDate, smallPosterPath, id) {
+function activateModal(title, overview, rating, bigPosterPath, releaseDate, id) {
     //setting inner html
     modalTitle.innerHTML = title;
     modalOverview.innerHTML = overview;
@@ -43,10 +42,9 @@ function activateModal(title, overview, rating, bigPosterPath, releaseDate, smal
     modalPoster.setAttribute("src", bigPosterPath);
     movieModal.setAttribute("style", "display:flex");
 
-    //passing in the poster path as an attribute on the favorite button, so the recordFavroite function can record it into local storage if it was clicked. 
-    smallPosterPath = JSON.stringify(smallPosterPath);
-    favoriteButton.setAttribute("data-id", JSON.stringify(id));
-    favoriteButton.setAttribute("onclick", "recordFavorite(" + smallPosterPath + ")")
+    //passing in movie ids into the availabilty button and favorite button, so in availabilty can be used for api query, and in favorite can be used to store into local storage
+    availabilityButton.setAttribute("data-id", JSON.stringify(id));
+    favoriteButton.setAttribute("onclick", "recordFavorite(" + JSON.stringify(id) + ")")
 
     //every time a new poster is clicked initializing the display of the streaming logos to none. When the availability button is clicked it will repopulate based on the new movie clicked
     hbo.setAttribute("style", "display: none");
@@ -84,10 +82,10 @@ function createPoster(result) {
     let overview = JSON.stringify(result.overview);
     let rating = JSON.stringify(result.vote_average);
     let bigPosterPath = JSON.stringify(baseImgUrl + bigPosterURL + result.poster_path)
-    let releaseDate = JSON.stringify(result.release_date);
+    let releaseDate = JSON.stringify(result.release_date); 
     let id = JSON.stringify(result.id);
 
-    poster.setAttribute('onclick', 'activateModal(' + title + ',' + overview + ',' + rating + ',' + bigPosterPath + ',' + releaseDate + ',' + smallPosterPath + ',' + id + ');');
+    poster.setAttribute('onclick', 'activateModal(' + title + ',' + overview + ',' + rating + ',' + bigPosterPath + ',' + releaseDate + ',' + id + ');');
     return poster;
 }
 
@@ -119,9 +117,7 @@ function findMovies() {
             }
         });
 }
-/*------------End Search Query ---------------------*/
 
-/*------------Modal Functions ---------------------*/
 
 //eventlistener for search button 
 searchButton.addEventListener("click", function () {
@@ -131,8 +127,10 @@ searchButton.addEventListener("click", function () {
     // find movies is the function that does the api call
     findMovies();
 });
+/*------------End Search Query ---------------------*/
 
 
+/*------------Modal Functions ---------------------*/
 
 //onclick function so that when you click in the background of the modal it exits out.
 window.onclick = function (event) {
@@ -147,21 +145,28 @@ exitModal.onclick = function () {
 
 /*------------Start Favorites/Local Storage ---------------------*/
 
-// intializing key to 0. If there is something in local storage it gets the length of local storage. 
-let key = 0;
-if (localStorage) {
-    key = localStorage.length;
+// intializing key to 0.
+let key=0;
+//if there is anything in local storage it gets the last used highest number key. and continues off of that. 
+if (localStorage.length!==0){
+    for(let i=0; i<localStorage.length; i++){
+        if(localStorage.key(i)>key){
+            key= localStorage.key(i);
+        }
+    } 
+    key++; //adds one to they key obtained from local storage to continue off of last key
 }
-//record favorite function. Sets poster path into local storage
-let recordFavorite = function (smallPosterPath) {
+
+//record favorite function. Sets movie id into local storage
+function recordFavorite(id) {
 
     //if the poster path is already in local storage do no set a duplicate into local storage
     for (let i = 0; i < localStorage.length; i++) {
-        if (localStorage.getItem(localStorage.key(i)) == smallPosterPath) {
+        if (localStorage.getItem(localStorage.key(i)) == id) {
             return;
         }
     }
-    localStorage.setItem(key, smallPosterPath);
+    localStorage.setItem(key, id);
     key++;
 }
 /*------------End Favorites/Local Storage ---------------------*/
@@ -194,8 +199,8 @@ function showStreaming(data) {
     if (huluBoolean) {
         hulu.setAttribute("style", "display: block");
     }
-    if (!hboBoolean && !netflixBoolean && !primeBoolean && !disneyBoolean && !huluBoolean) {
-        none.setAttribute("style", "display: block");
+    if (!hboBoolean && !netflixBoolean && !primeBoolean && !disneyBoolean && !huluBoolean) {  // if there is not available on streaming platforms
+        none.setAttribute("style", "display: block");  
     }
 
 }
@@ -203,7 +208,7 @@ function showStreaming(data) {
 // event listener function that checks the availability of the movie on a streaming service
 availabilityButton.addEventListener("click", function () {
 
-    let id = favoriteButton.getAttribute("data-id");
+    let id = availabilityButton.getAttribute("data-id");
     fetch(`https://streaming-availability.p.rapidapi.com/get/basic?country=us&tmdb_id=movie%2F${id}`, {
         "method": "GET",
         "headers": {
@@ -246,10 +251,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /*-------Home Page-----------------*/
 
+// Fetch that will make the home page with the most trending movies
 fetch(`${baseURL}trending/movie/week${apiKey}`)
         .then(response => response.json())
         .then(function (data) {
-            console.log(data);
             // loops through each object in the results response to show all posters
             for (let i = 0; i < data.results.length; i++) {
                 const result = data.results[i];
