@@ -93,3 +93,10 @@ body {
        width: 60%;
    }
   }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: black;
+      color: white;
+    }
+  }
