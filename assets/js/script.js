@@ -3,9 +3,8 @@ const baseURL = 'https://api.themoviedb.org/3/';
 const baseImgUrl = "https://image.tmdb.org/t/p/";
 const smallPosterURL = 'w185';
 const bigPosterURL = 'w342';
-
 // w45, w92, w152, w185, w342, w500, w780  poster sizes
-let query = "jaws";
+
 //grabbing html elements
 const queryContainer = document.getElementById("queryContainer");
 const searchText = document.getElementById("searchText");
@@ -34,7 +33,7 @@ const none = document.getElementById("none");
 /*------------Start Search Query ---------------------*/
 
 //onclick function for each poster. this function populates the modal with the information based on the movie that was clicked. 
-function activateModal(title, overview, rating, bigPosterPath, releaseDate, smallPosterPath, id) {
+function activateModal(title, overview, rating, bigPosterPath, releaseDate, id) {
     //setting inner html
     modalTitle.innerHTML = title;
     modalOverview.innerHTML = overview;
@@ -44,9 +43,8 @@ function activateModal(title, overview, rating, bigPosterPath, releaseDate, smal
     movieModal.setAttribute("style", "display:flex");
 
     //passing in the poster path as an attribute on the favorite button, so the recordFavroite function can record it into local storage if it was clicked. 
-    smallPosterPath = JSON.stringify(smallPosterPath);
     favoriteButton.setAttribute("data-id", JSON.stringify(id));
-    favoriteButton.setAttribute("onclick", "recordFavorite(" + smallPosterPath + ")")
+    favoriteButton.setAttribute("onclick", "recordFavorite(" + JSON.stringify(id) + ")")
 
     //every time a new poster is clicked initializing the display of the streaming logos to none. When the availability button is clicked it will repopulate based on the new movie clicked
     hbo.setAttribute("style", "display: none");
@@ -84,10 +82,10 @@ function createPoster(result) {
     let overview = JSON.stringify(result.overview);
     let rating = JSON.stringify(result.vote_average);
     let bigPosterPath = JSON.stringify(baseImgUrl + bigPosterURL + result.poster_path)
-    let releaseDate = JSON.stringify(result.release_date);
+    let releaseDate = JSON.stringify(result.release_date); 
     let id = JSON.stringify(result.id);
 
-    poster.setAttribute('onclick', 'activateModal(' + title + ',' + overview + ',' + rating + ',' + bigPosterPath + ',' + releaseDate + ',' + smallPosterPath + ',' + id + ');');
+    poster.setAttribute('onclick', 'activateModal(' + title + ',' + overview + ',' + rating + ',' + bigPosterPath + ',' + releaseDate + ',' + id + ');');
     return poster;
 }
 
@@ -153,15 +151,15 @@ if (localStorage) {
     key = localStorage.length;
 }
 //record favorite function. Sets poster path into local storage
-let recordFavorite = function (smallPosterPath) {
+let recordFavorite = function (id) {
 
     //if the poster path is already in local storage do no set a duplicate into local storage
     for (let i = 0; i < localStorage.length; i++) {
-        if (localStorage.getItem(localStorage.key(i)) == smallPosterPath) {
+        if (localStorage.getItem(localStorage.key(i)) == id) {
             return;
         }
     }
-    localStorage.setItem(key, smallPosterPath);
+    localStorage.setItem(key, id);
     key++;
 }
 /*------------End Favorites/Local Storage ---------------------*/

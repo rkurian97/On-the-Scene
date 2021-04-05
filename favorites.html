@@ -6,7 +6,9 @@
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+
 	<link href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 	<link href="./assets/css/style.css" rel="stylesheet">
 	<title>Document</title>
 </head>
@@ -39,6 +41,45 @@
 </div>
 <!--end Favorite Result Box-->
 
+<!--begin movie modal-->
+<div class="modal" id="favoriteModal">
+	<div class="modal-background"> </div>
+	<div class="modal-card">
+		<header class="modal-card-head has-text-centered">
+			<p class="modal-card-title" id="modalTitle"></p>
+			<button aria-label="close" class="delete" id="exitModal"></button>
+		</header>
+		<section class="modal-card-body">
+			<div class="is-flex is-justify-content-center">
+				<img id="modalPoster">
+			</div>
+			<h2 class="title is-threehas-text-centered">Overview</h2>
+			<p id="modalOverview" class="mt-2"></p>
+			<p id="modalReleaseDate" class="mt-2"></p>
+			<p id="modalRating" class="mt-2"></p>
+			<button class="button gradient mt-2" id="availabilityButton">Check Availability</button>
+			<br>
+
+			<img class="mt-2" id="netflix" src="./assets/images/netflix.svg" style="display: none;">
+			<img class="mt-2" id="hbo" src="./assets/images/hbo.svg" style="display: none;">
+			<img class="mt-2" id="prime" src="./assets/images/prime.svg" style="display: none;">
+			<img class="mt-2" id="disney" src="./assets/images/disney.svg" style="display: none;">
+			<img class="mt-2" id="hulu" src="./assets/images/hulu.svg" style="display: none;">
+			<p class="mt-2" id="none" style="display: none;" style="display: none;"><strong>None Sorry!</strong></p>
+
+		</section>
+		<footer class="modal-card-foot">
+			<button class="button gradient" id="trash">
+				<span class="icon">
+				  <i class="far fa-trash-alt"></i>
+				</span>
+			</button>
+		</footer>
+	</div>
+</div>
+</div>
+<!--end modal-->
+
 <!--footer-->
 	<footer class="footer gradient has-text-primary-light">
 			<div class="content has-text-centered">
@@ -47,7 +88,7 @@
 	</footer>
 <!--end footer-->
 
-	<script src="./assets/js/favorite.js">
-	</script>
+	<script src='assets/js/keys.js'></script>
+	<script src="./assets/js/favorite.js"></script>
 </body>
 </html>

@@ -1,41 +1,112 @@
-const baseImgUrl= "https://image.tmdb.org/t/p/";
-const smallPosterURL= 'w185';
+// urls
+const baseURL = 'https://api.themoviedb.org/3/';
+const baseImgUrl = "https://image.tmdb.org/t/p/";
+const smallPosterURL = 'w185';
+const bigPosterURL = 'w342';
 
 const favoritesContainer= document.getElementById("favoritesContainer");
 
+// movie modal elements
+const favoriteModal = document.getElementById("favoriteModal");
+const exitModal = document.getElementById("exitModal");
+const modalPoster = document.getElementById("modalPoster");
+const modalOverview = document.getElementById("modalOverview");
+const modalRating = document.getElementById("modalRating");
+const modalTitle = document.getElementById("modalTitle");
+const modalReleaseDate = document.getElementById("modalReleaseDate");
+const trashButton = document.getElementById("trash");
 
+//Streaming elements
+const availabilityButton = document.getElementById("availabilityButton");
+const netflix = document.getElementById("netflix");
+const hbo = document.getElementById("hbo");
+const prime = document.getElementById("prime");
+const disney = document.getElementById("disney");
+const hulu = document.getElementById("hulu");
+const none = document.getElementById("none");
 
+// activating modal with all the movie info
+function activateModal(title, overview, rating, bigPosterPath, releaseDate, id){
+    modalTitle.innerHTML = title;
+    modalOverview.innerHTML = overview;
+    modalRating.innerHTML = "<strong>Rating: </strong>" + rating;
+    modalReleaseDate.innerHTML = "<strong>Release Date: </strong>" + releaseDate;
+    modalPoster.setAttribute("src", bigPosterPath);
 
-let loadFavorites=function(){
+    favoriteModal.setAttribute("style", "display:flex");
+    trashButton.setAttribute("onclick", "removeFav( "+JSON.stringify(id)+");");
+}
 
-    for(let i=0; i<localStorage.length; i++){
+// create an img div
+function createImgDiv(){
+    const imgDiv= document.createElement("div");
+    imgDiv.setAttribute("class", "column is-one-fifth");
+    return imgDiv;
+}
+
+// create a gradient div
+function createGradientDiv(){
+    const gradientDiv= document.createElement("div");
+    gradientDiv.setAttribute("class", "gradientDiv");
+    return gradientDiv;
+}
+
+// creating the poster
+function createPoster(data){
+    //making poster and adding its data into the activateModal function
+    let title = JSON.stringify(data.original_title);
+    let overview = JSON.stringify(data.overview);
+    let rating = JSON.stringify(data.vote_average);
+    let bigPosterPath = JSON.stringify(baseImgUrl + bigPosterURL + data.poster_path)
+    let releaseDate = JSON.stringify(data.release_date);
+    let id = JSON.stringify(data.id);
+
+    const poster=document.createElement("img");
+    let smallPosterPath= data.poster_path;
+    poster.setAttribute("class", "smallPoster");
+    poster.setAttribute("src", baseImgUrl + smallPosterURL + smallPosterPath)
+    poster.setAttribute('onclick', 'activateModal(' + title + ',' + overview + ',' + rating + ',' + bigPosterPath + ',' + releaseDate +  ',' + id +  ');');
+
+    return poster
+}
+
+// request for a specific movie and add the poster to the page
+function requestMovie(id){
+    fetch(`${baseURL}movie/${id}${apiKey}`)
+    .then(response => response.json())
+    .then(function (data) {
         //making column div container for each poster
-        const imgDiv= document.createElement("div");
-        imgDiv.setAttribute("class", "column is-one-fifth");
-        imgDiv.setAttribute("onclick", "remove(this)");
-        imgDiv.setAttribute("id", localStorage.key(i));
+        const imgDiv= createImgDiv();
         favoritesContainer.append(imgDiv)
 
         //making another div for the gradient effect
-        const gradientDiv= document.createElement("div");
-        gradientDiv.setAttribute("class", "gradientDiv");
+        const gradientDiv= createGradientDiv();
         imgDiv.append(gradientDiv);
-        
-        //making poster and adding its data into the activateModal function
-        const poster=document.createElement("img");
-        let smallPosterPath=localStorage.getItem(localStorage.key(i));
-        poster.setAttribute("src", baseImgUrl+smallPosterURL+smallPosterPath);
-        poster.setAttribute("class", "smallPoster");
+
+        const poster= createPoster(data);
         gradientDiv.append(poster);
+    });
+}
+
+// Removes favorite
+function removeFav(id){
+    for(let i=0; i<localStorage.length; i++){
+        if(localStorage.getItem(localStorage.key(i))==id){
+            localStorage.removeItem(localStorage.key(i));
+            location.reload();
+        }
     }
 }
 
-let remove= function(ele){
-    let element= ele;
-    localStorage.removeItem(ele.id);
-    element.remove();
-}
+// Loads in all the favorite movies from local storage
+function loadFavorites(){
 
+    for(let i=0; i<localStorage.length; i++){
+
+        let id= localStorage.getItem(localStorage.key(i));
+        requestMovie(id);
+    }
+}
 loadFavorites();
 
 /*------------NavBar Function ---------------------*/
@@ -63,3 +134,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+
+//onclick function so that when you click in the background of the modal it exits out.
+window.onclick = function (event) {
+    if (event.target.className == 'modal-background') {
+        favoriteModal.setAttribute("style", "display:none");
+    }
+}
+// Or if you click the x button on the modal it also exits out. 
+exitModal.onclick = function () {
+    favoriteModal.setAttribute("style", "display:none");
+}
