@@ -74,17 +74,7 @@ body > footer {
 }
 
 /* dark mode */
-body {
-    padding: 25px;
-    background-color: white;
-    color: #121212;
-    font-size: 25px;
-  }
-  
-  .dark-mode {
-    background-color: #121212;;
-    color: white;
-  }
+
 
 
 /*Media Queries*/
