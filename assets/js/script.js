@@ -275,7 +275,7 @@ fetch(`${baseURL}trending/movie/week${apiKey}`)
             }
         });
 
-// function for dark mode
+//  dark mode
 const chk = document.getElementById('chk');
 
 chk.addEventListener('change', () => {
