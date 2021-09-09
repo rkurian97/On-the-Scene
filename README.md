@@ -31,6 +31,9 @@ Here is a link to the live application: [https://rkurian97.github.io/bc-project-
 
 [Dakota Nelson](https://github.com/kotalilyy)
 
+##
+![alt text](./assets/images/readmeIMG.png)
+
 ## Questions
 
 If you have any questions feel free to email the contributing team members.
