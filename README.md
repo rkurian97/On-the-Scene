@@ -15,7 +15,7 @@ On The Scene is a Movie Database that provides streaming availability details fo
 
 ## Live Link
 
-Here is a link to the live application: [https://rkurian97.github.io/bc-project-1/](https://rkurian97.github.io/bc-project-1/)
+Here is a link to the live application: [https://rkurian97.github.io/On-the-Scene/](https://rkurian97.github.io/bc-project-1/)
 
 ## Usage
 
